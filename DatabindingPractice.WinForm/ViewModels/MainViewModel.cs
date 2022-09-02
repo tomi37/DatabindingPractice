@@ -1,5 +1,8 @@
-﻿using DatabindingPractice.WinForm.Helpers;
+﻿using DatabindingPractice.WinForm.Exceptions;
+using DatabindingPractice.WinForm.Helpers;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -46,6 +49,36 @@ namespace DatabindingPractice.WinForm.ViewModels
         {
             string str = SettingComboBoxSelectedItem.DisplayValue.ToString();
             MessageBox.Show(str);
+        }
+
+        public void InfoTest()
+        {
+            // 自作のInfoExceptionの確認
+            // Info用のアイコン
+            throw new InputException("Info Message!");
+        }
+
+        public void WarningTest()
+        {
+            // 自作のWarningExceptionの確認
+            // Warning用のアイコン
+            throw new WarningException("Warning Message!");
+        }
+
+        public void ErrorTest()
+        {
+            // .NET標準のExceptionの確認
+            // Error用のアイコン
+            throw new ArgumentException("Error Message!");
+        }
+
+        public async Task ErrorTestAsync()
+        {
+            // 非同期でもちゃんとメッセージが表示されることを確認
+            await Task.Run(() =>
+            {
+                throw new InputException("Error Async Message!");
+            });
         }
     }
 }

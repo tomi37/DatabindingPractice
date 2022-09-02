@@ -47,6 +47,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ExceptionBase.cs" />
+    <Compile Include="Exceptions\InputException.cs" />
+    <Compile Include="Exceptions\WarningException.cs" />
     <Compile Include="Helpers\BindingListAsync.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

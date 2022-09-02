@@ -25,6 +25,12 @@ namespace DatabindingPractice.WinForm.Views
 
             // Check
             CheckButton.Click += (sender, e) => _viewModel.Check();
+
+            // Exception Test
+            InfoButton.Click += (sender, e) => _viewModel.InfoTest();
+            WarningButton.Click += (sender, e) => _viewModel.WarningTest();
+            ErrorButton.Click += (sender, e) => _viewModel.ErrorTest();
+            ErrorAsyncButton.Click += async (sender, e) => await _viewModel.ErrorTestAsync();
         }
     }
 }
