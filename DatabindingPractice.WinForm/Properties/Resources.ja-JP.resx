@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ComboBoxTest" xml:space="preserve">
-    <value>ComboBox Test</value>
+    <value>コンボボックス確認</value>
   </data>
   <data name="ExceptionTest" xml:space="preserve">
-    <value>Exception Test</value>
+    <value>例外確認</value>
   </data>
   <data name="SelectLanguage" xml:space="preserve">
-    <value>Select Language</value>
+    <value>言語選択</value>
   </data>
 </root>

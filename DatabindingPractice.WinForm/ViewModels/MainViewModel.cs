@@ -1,7 +1,9 @@
 ﻿using DatabindingPractice.WinForm.Exceptions;
 using DatabindingPractice.WinForm.Helpers;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -10,20 +12,27 @@ namespace DatabindingPractice.WinForm.ViewModels
 {
     public sealed class MainViewModel : ViewModelBase
     {
-        private object _settingComboBoxSelectedValue;
+        private ICustomMessage _message;
 
-        public MainViewModel(Dispatcher dispatcher)
+        public MainViewModel()
+            : this(Dispatcher.CurrentDispatcher, new CustomMessage())
+        {
+        }
+
+        public MainViewModel(Dispatcher dispatcher, ICustomMessage message)
         {
             base.Dispacher = dispatcher;
-
+            
             SettingComboBoxDataSource = new BindingListAsync<MainViewModelComboBox>(dispatcher);
             SettingComboBoxDataSource.Add(new MainViewModelComboBox(1, "111"));
             SettingComboBoxDataSource.Add(new MainViewModelComboBox(2, "222"));
             SettingComboBoxDataSource.Add(new MainViewModelComboBox(3, "333"));
-            
+            _message = message;
         }
 
         // ComboBox Data Source
+        private object _settingComboBoxSelectedValue;
+
         public BindingListAsync<MainViewModelComboBox> SettingComboBoxDataSource { get; set; }
 
         // ComboBox Selected Item
@@ -38,6 +47,68 @@ namespace DatabindingPractice.WinForm.ViewModels
                 SetProperty(ref _settingComboBoxSelectedValue, value);
                 SettingComboBoxSelectedItem = SettingComboBoxDataSource.FirstOrDefault(x => x.Value == (int)value);
             }
+        }
+
+        // Radio Button
+        private bool _jpRadioButtonChecked = false;
+        public bool JPRadioButtonChecked
+        {
+            get { return _jpRadioButtonChecked; }
+            set
+            {
+                SetProperty(ref _jpRadioButtonChecked, value);
+                if (value)
+                {
+                    SetProperty(ref _enRadioButtonChecked, false, nameof(ENRadioButtonChecked));
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("ja-JP");
+                    ChangeLanguage();
+                }
+            }
+        }
+
+        private bool _enRadioButtonChecked = false;
+        public bool ENRadioButtonChecked
+        {
+            get { return _enRadioButtonChecked; }
+            set
+            {
+                SetProperty(ref _enRadioButtonChecked, value);
+                if (value)
+                {
+                    SetProperty(ref _jpRadioButtonChecked, false, nameof(JPRadioButtonChecked));
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+                    ChangeLanguage();
+                }
+            }
+        }
+
+        // 言語切り替え確認
+        private string _comboGroupBoxText = Properties.Resources.ComboBoxTest;
+        public string ComboGroupBoxText
+        {
+            get { return _comboGroupBoxText; }
+            set { SetProperty(ref _comboGroupBoxText, value); }
+        }
+
+        private string _exceptionGroupBoxText = Properties.Resources.ExceptionTest;
+        public string ExceptionGroupBoxText
+        {
+            get { return _exceptionGroupBoxText; }
+            set { SetProperty(ref _exceptionGroupBoxText, value); }
+        }
+
+        private string _languageGroupBoxText = Properties.Resources.SelectLanguage;
+        public string LanguageGroupBoxText
+        {
+            get { return _languageGroupBoxText; }
+            set { SetProperty(ref _languageGroupBoxText, value); }
+        }
+
+        public void ChangeLanguage()
+        {
+            ComboGroupBoxText = Properties.Resources.ComboBoxTest;
+            ExceptionGroupBoxText = Properties.Resources.ExceptionTest;
+            LanguageGroupBoxText = Properties.Resources.SelectLanguage;
         }
 
         public void Update()

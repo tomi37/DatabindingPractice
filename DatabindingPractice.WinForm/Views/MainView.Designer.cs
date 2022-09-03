@@ -31,14 +31,19 @@
             this.SettingComboBox = new System.Windows.Forms.ComboBox();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.CheckButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.InfoButton = new System.Windows.Forms.Button();
-            this.WarningButton = new System.Windows.Forms.Button();
-            this.ErrorButton = new System.Windows.Forms.Button();
+            this.ComboGroupBox = new System.Windows.Forms.GroupBox();
+            this.ExceptionGroupBox = new System.Windows.Forms.GroupBox();
             this.ErrorAsyncButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.ErrorButton = new System.Windows.Forms.Button();
+            this.WarningButton = new System.Windows.Forms.Button();
+            this.InfoButton = new System.Windows.Forms.Button();
+            this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.JPRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.ENRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.ComboGroupBox.SuspendLayout();
+            this.ExceptionGroupBox.SuspendLayout();
+            this.LanguageGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingComboBox
@@ -60,63 +65,36 @@
             // 
             // CheckButton
             // 
-            this.CheckButton.Location = new System.Drawing.Point(682, 12);
+            this.CheckButton.Location = new System.Drawing.Point(12, 315);
             this.CheckButton.Name = "CheckButton";
             this.CheckButton.Size = new System.Drawing.Size(106, 43);
             this.CheckButton.TabIndex = 2;
             this.CheckButton.Text = "Check";
             this.CheckButton.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // ComboGroupBox
             // 
-            this.groupBox1.Controls.Add(this.UpdateButton);
-            this.groupBox1.Controls.Add(this.SettingComboBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 90);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "コンボボックス確認";
+            this.ComboGroupBox.Controls.Add(this.UpdateButton);
+            this.ComboGroupBox.Controls.Add(this.SettingComboBox);
+            this.ComboGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.ComboGroupBox.Name = "ComboGroupBox";
+            this.ComboGroupBox.Size = new System.Drawing.Size(410, 90);
+            this.ComboGroupBox.TabIndex = 3;
+            this.ComboGroupBox.TabStop = false;
+            this.ComboGroupBox.Text = "コンボボックス確認";
             // 
-            // groupBox2
+            // ExceptionGroupBox
             // 
-            this.groupBox2.Controls.Add(this.ErrorAsyncButton);
-            this.groupBox2.Controls.Add(this.ErrorButton);
-            this.groupBox2.Controls.Add(this.WarningButton);
-            this.groupBox2.Controls.Add(this.InfoButton);
-            this.groupBox2.Location = new System.Drawing.Point(18, 108);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 100);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "例外確認";
-            // 
-            // InfoButton
-            // 
-            this.InfoButton.Location = new System.Drawing.Point(6, 35);
-            this.InfoButton.Name = "InfoButton";
-            this.InfoButton.Size = new System.Drawing.Size(77, 40);
-            this.InfoButton.TabIndex = 5;
-            this.InfoButton.Text = "Info";
-            this.InfoButton.UseVisualStyleBackColor = true;
-            // 
-            // WarningButton
-            // 
-            this.WarningButton.Location = new System.Drawing.Point(89, 35);
-            this.WarningButton.Name = "WarningButton";
-            this.WarningButton.Size = new System.Drawing.Size(77, 40);
-            this.WarningButton.TabIndex = 6;
-            this.WarningButton.Text = "Warning";
-            this.WarningButton.UseVisualStyleBackColor = true;
-            // 
-            // ErrorButton
-            // 
-            this.ErrorButton.Location = new System.Drawing.Point(172, 35);
-            this.ErrorButton.Name = "ErrorButton";
-            this.ErrorButton.Size = new System.Drawing.Size(77, 40);
-            this.ErrorButton.TabIndex = 7;
-            this.ErrorButton.Text = "Error";
-            this.ErrorButton.UseVisualStyleBackColor = true;
+            this.ExceptionGroupBox.Controls.Add(this.ErrorAsyncButton);
+            this.ExceptionGroupBox.Controls.Add(this.ErrorButton);
+            this.ExceptionGroupBox.Controls.Add(this.WarningButton);
+            this.ExceptionGroupBox.Controls.Add(this.InfoButton);
+            this.ExceptionGroupBox.Location = new System.Drawing.Point(12, 108);
+            this.ExceptionGroupBox.Name = "ExceptionGroupBox";
+            this.ExceptionGroupBox.Size = new System.Drawing.Size(410, 100);
+            this.ExceptionGroupBox.TabIndex = 4;
+            this.ExceptionGroupBox.TabStop = false;
+            this.ExceptionGroupBox.Text = "例外確認";
             // 
             // ErrorAsyncButton
             // 
@@ -127,18 +105,83 @@
             this.ErrorAsyncButton.Text = "ErrorAsync";
             this.ErrorAsyncButton.UseVisualStyleBackColor = true;
             // 
+            // ErrorButton
+            // 
+            this.ErrorButton.Location = new System.Drawing.Point(172, 35);
+            this.ErrorButton.Name = "ErrorButton";
+            this.ErrorButton.Size = new System.Drawing.Size(77, 40);
+            this.ErrorButton.TabIndex = 7;
+            this.ErrorButton.Text = "Error";
+            this.ErrorButton.UseVisualStyleBackColor = true;
+            // 
+            // WarningButton
+            // 
+            this.WarningButton.Location = new System.Drawing.Point(89, 35);
+            this.WarningButton.Name = "WarningButton";
+            this.WarningButton.Size = new System.Drawing.Size(77, 40);
+            this.WarningButton.TabIndex = 6;
+            this.WarningButton.Text = "Warning";
+            this.WarningButton.UseVisualStyleBackColor = true;
+            // 
+            // InfoButton
+            // 
+            this.InfoButton.Location = new System.Drawing.Point(6, 35);
+            this.InfoButton.Name = "InfoButton";
+            this.InfoButton.Size = new System.Drawing.Size(77, 40);
+            this.InfoButton.TabIndex = 5;
+            this.InfoButton.Text = "Info";
+            this.InfoButton.UseVisualStyleBackColor = true;
+            // 
+            // LanguageGroupBox
+            // 
+            this.LanguageGroupBox.Controls.Add(this.ENRadioButton);
+            this.LanguageGroupBox.Controls.Add(this.JPRadioButton);
+            this.LanguageGroupBox.Location = new System.Drawing.Point(12, 225);
+            this.LanguageGroupBox.Name = "LanguageGroupBox";
+            this.LanguageGroupBox.Size = new System.Drawing.Size(410, 66);
+            this.LanguageGroupBox.TabIndex = 5;
+            this.LanguageGroupBox.TabStop = false;
+            this.LanguageGroupBox.Text = "言語選択確認";
+            // 
+            // JPRadioButton
+            // 
+            this.JPRadioButton.AutoCheck = false;
+            this.JPRadioButton.AutoSize = true;
+            this.JPRadioButton.Location = new System.Drawing.Point(18, 31);
+            this.JPRadioButton.Name = "JPRadioButton";
+            this.JPRadioButton.Size = new System.Drawing.Size(88, 19);
+            this.JPRadioButton.TabIndex = 6;
+            this.JPRadioButton.TabStop = true;
+            this.JPRadioButton.Text = "Japanese";
+            this.JPRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ENRadioButton
+            // 
+            this.ENRadioButton.AutoCheck = false;
+            this.ENRadioButton.AutoSize = true;
+            this.ENRadioButton.Location = new System.Drawing.Point(112, 31);
+            this.ENRadioButton.Name = "ENRadioButton";
+            this.ENRadioButton.Size = new System.Drawing.Size(72, 19);
+            this.ENRadioButton.TabIndex = 7;
+            this.ENRadioButton.TabStop = true;
+            this.ENRadioButton.Text = "English";
+            this.ENRadioButton.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(795, 450);
+            this.Controls.Add(this.LanguageGroupBox);
+            this.Controls.Add(this.ExceptionGroupBox);
+            this.Controls.Add(this.ComboGroupBox);
             this.Controls.Add(this.CheckButton);
             this.Name = "MainView";
             this.Text = "MainView";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.ComboGroupBox.ResumeLayout(false);
+            this.ExceptionGroupBox.ResumeLayout(false);
+            this.LanguageGroupBox.ResumeLayout(false);
+            this.LanguageGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -148,11 +191,15 @@
         private System.Windows.Forms.ComboBox SettingComboBox;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button CheckButton;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox ComboGroupBox;
+        private System.Windows.Forms.GroupBox ExceptionGroupBox;
         private System.Windows.Forms.Button ErrorAsyncButton;
         private System.Windows.Forms.Button ErrorButton;
         private System.Windows.Forms.Button WarningButton;
         private System.Windows.Forms.Button InfoButton;
+        private System.Windows.Forms.GroupBox LanguageGroupBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Helpers.CustomRadioButton ENRadioButton;
+        private Helpers.CustomRadioButton JPRadioButton;
     }
 }
