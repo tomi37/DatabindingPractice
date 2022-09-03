@@ -39,11 +39,15 @@
             this.InfoButton = new System.Windows.Forms.Button();
             this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.JPRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.MedicalCheckDataGridView = new System.Windows.Forms.DataGridView();
+            this.GetDataButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.ENRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.JPRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
             this.ComboGroupBox.SuspendLayout();
             this.ExceptionGroupBox.SuspendLayout();
             this.LanguageGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MedicalCheckDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SettingComboBox
@@ -143,17 +147,33 @@
             this.LanguageGroupBox.TabStop = false;
             this.LanguageGroupBox.Text = "言語選択確認";
             // 
-            // JPRadioButton
+            // MedicalCheckDataGridView
             // 
-            this.JPRadioButton.AutoCheck = false;
-            this.JPRadioButton.AutoSize = true;
-            this.JPRadioButton.Location = new System.Drawing.Point(18, 31);
-            this.JPRadioButton.Name = "JPRadioButton";
-            this.JPRadioButton.Size = new System.Drawing.Size(88, 19);
-            this.JPRadioButton.TabIndex = 6;
-            this.JPRadioButton.TabStop = true;
-            this.JPRadioButton.Text = "Japanese";
-            this.JPRadioButton.UseVisualStyleBackColor = true;
+            this.MedicalCheckDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MedicalCheckDataGridView.Location = new System.Drawing.Point(412, 22);
+            this.MedicalCheckDataGridView.Name = "MedicalCheckDataGridView";
+            this.MedicalCheckDataGridView.RowHeadersWidth = 51;
+            this.MedicalCheckDataGridView.RowTemplate.Height = 24;
+            this.MedicalCheckDataGridView.Size = new System.Drawing.Size(493, 186);
+            this.MedicalCheckDataGridView.TabIndex = 6;
+            // 
+            // GetDataButton
+            // 
+            this.GetDataButton.Location = new System.Drawing.Point(412, 214);
+            this.GetDataButton.Name = "GetDataButton";
+            this.GetDataButton.Size = new System.Drawing.Size(106, 43);
+            this.GetDataButton.TabIndex = 7;
+            this.GetDataButton.Text = "Get";
+            this.GetDataButton.UseVisualStyleBackColor = true;
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(799, 214);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(106, 43);
+            this.ClearButton.TabIndex = 8;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
             // 
             // ENRadioButton
             // 
@@ -167,11 +187,26 @@
             this.ENRadioButton.Text = "English";
             this.ENRadioButton.UseVisualStyleBackColor = true;
             // 
+            // JPRadioButton
+            // 
+            this.JPRadioButton.AutoCheck = false;
+            this.JPRadioButton.AutoSize = true;
+            this.JPRadioButton.Location = new System.Drawing.Point(18, 31);
+            this.JPRadioButton.Name = "JPRadioButton";
+            this.JPRadioButton.Size = new System.Drawing.Size(88, 19);
+            this.JPRadioButton.TabIndex = 6;
+            this.JPRadioButton.TabStop = true;
+            this.JPRadioButton.Text = "Japanese";
+            this.JPRadioButton.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 450);
+            this.ClientSize = new System.Drawing.Size(946, 450);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.GetDataButton);
+            this.Controls.Add(this.MedicalCheckDataGridView);
             this.Controls.Add(this.LanguageGroupBox);
             this.Controls.Add(this.ExceptionGroupBox);
             this.Controls.Add(this.ComboGroupBox);
@@ -182,6 +217,7 @@
             this.ExceptionGroupBox.ResumeLayout(false);
             this.LanguageGroupBox.ResumeLayout(false);
             this.LanguageGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MedicalCheckDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,5 +237,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Helpers.CustomRadioButton ENRadioButton;
         private Helpers.CustomRadioButton JPRadioButton;
+        private System.Windows.Forms.DataGridView MedicalCheckDataGridView;
+        private System.Windows.Forms.Button GetDataButton;
+        private System.Windows.Forms.Button ClearButton;
     }
 }

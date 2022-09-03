@@ -1,4 +1,5 @@
-﻿using DatabindingPractice.WinForm.Exceptions;
+﻿using DatabindingPractice.Domain.Entities;
+using DatabindingPractice.WinForm.Exceptions;
 using DatabindingPractice.WinForm.Helpers;
 using System;
 using System.Globalization;
@@ -28,6 +29,8 @@ namespace DatabindingPractice.WinForm.ViewModels
             SettingComboBoxDataSource.Add(new MainViewModelComboBox(2, "222"));
             SettingComboBoxDataSource.Add(new MainViewModelComboBox(3, "333"));
             _message = message;
+
+            MedicalCheckDataGridSource = new BindingListAsync<MainViewModelDataGridView>(dispatcher);
         }
 
         // ComboBox Data Source
@@ -102,6 +105,36 @@ namespace DatabindingPractice.WinForm.ViewModels
         {
             get { return _languageGroupBoxText; }
             set { SetProperty(ref _languageGroupBoxText, value); }
+        }
+
+        // データグリッド
+        public BindingListAsync<MainViewModelDataGridView> MedicalCheckDataGridSource { get; set; }
+
+        // データ生成（本来はファイルやデータベースからとってくる）
+        public async Task GetData()
+        {
+            var rand = new Random();
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    var height = (float)(rand.NextDouble() * 100 + 100); // 100cm ~ 200cm間のランダム値
+                    var width = (float)(rand.NextDouble() * 50 + 50); // 50kg ~ 100kg間のランダム値
+                    var date = DateTime.Now;
+                    var rowdata = new MedicalCheckEntity(height, width, date.AddDays(i));
+                    MedicalCheckDataGridSource.Add(new MainViewModelDataGridView(
+                        rowdata.Height.DisplayValue,
+                        rowdata.Weight.DisplayValue,
+                        rowdata.Bmi,
+                        rowdata.MeasureDate.DisplayValue));
+                    System.Threading.Thread.Sleep(1000);
+                }
+            });
+        }
+
+        public void ClearData()
+        {
+            MedicalCheckDataGridSource.Clear();
         }
 
         public void ChangeLanguage()

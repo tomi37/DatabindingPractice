@@ -1,4 +1,5 @@
-﻿using DatabindingPractice.WinForm.ViewModels;
+﻿using DatabindingPractice.WinForm.Helpers;
+using DatabindingPractice.WinForm.ViewModels;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -43,6 +44,24 @@ namespace DatabindingPractice.WinForm.Views
             ComboGroupBox.DataBindings.Add("Text", _viewModel, nameof(_viewModel.ComboGroupBoxText));
             ExceptionGroupBox.DataBindings.Add("Text", _viewModel, nameof(_viewModel.ExceptionGroupBoxText));
             LanguageGroupBox.DataBindings.Add("Text", _viewModel, nameof(_viewModel.LanguageGroupBoxText));
+
+            // Data Grid View
+            MedicalCheckDataGridView.DataSource = _viewModel.MedicalCheckDataGridSource;
+            // ヘッダー部分
+            MedicalCheckDataGridView.Columns[nameof(MainViewModelDataGridView.Height)].HeaderText = "Height(cm)";
+            MedicalCheckDataGridView.Columns[nameof(MainViewModelDataGridView.Weight)].HeaderText = "Weight(kg)";
+            MedicalCheckDataGridView.Columns[nameof(MainViewModelDataGridView.Bmi)].HeaderText = "BMI(%)";
+            MedicalCheckDataGridView.Columns[nameof(MainViewModelDataGridView.Date)].HeaderText = "Date";
+            // 列幅を自動にする
+            MedicalCheckDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            // 縦横にスクロールバーを表示
+            MedicalCheckDataGridView.ScrollBars = ScrollBars.Both;
+
+            // Data Grid Viewにデータを追加する
+            GetDataButton.Click += async (sender, e) => await _viewModel.GetData();
+
+            // Data Grid Viewのデータをクリア
+            ClearButton.Click += (sender, e) => _viewModel.ClearData();
         }
     }
 }
