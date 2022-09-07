@@ -22,7 +22,6 @@ namespace DatabindingPractice.WinForm.Views
             SettingComboBox.ValueMember = nameof(MainViewModelComboBox.Value);
             SettingComboBox.DisplayMember = nameof(MainViewModelComboBox.DisplayValue);
             SettingComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            
 
             // Update
             UpdateButton.Click += (sender, e) => _viewModel.Update();

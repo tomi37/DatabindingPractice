@@ -1,0 +1,13 @@
+別のconfigを追加するメモ
+
+①test.configに下記を書く
+<?xml version="1.0" encoding="utf-8" ?>
+<appSettings>
+  <add key="IsTest" value="1"/>
+</appSettings>
+
+
+②ビルド時にコピーするように設定する
+
+③Windows FormのApp.configのconfigurationに下記を追加する
+  <appSettings configSource="test.config"></appSettings>　←追加部分
