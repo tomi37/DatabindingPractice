@@ -119,5 +119,47 @@ namespace TaskCancelTest
                 }
             }
         }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            bool ret = await ContinueHeavy();
+            MessageBox.Show("ret = " + ret.ToString());
+        }
+
+        private async Task<bool> ContinueHeavy()
+        {
+            return await Task.Run<bool>(() =>
+            {
+                if (!HeavyBool())
+                {
+                    MessageBox.Show("HeabyBool1 failed.");
+                    return false;
+                }
+
+                if (!HeavyBool2())
+                {
+                    MessageBox.Show("HeabyBool2 failed.");
+                    return false;
+                }
+
+                return true;
+            });
+        }
+
+        private bool HeavyBool()
+        {
+            Thread.Sleep(5000);
+            MessageBox.Show("HeabyBool1 complete");
+
+            return true;
+        }
+
+        private bool HeavyBool2()
+        {
+            Thread.Sleep(5000);
+            MessageBox.Show("HeabyBool2 complete");
+
+            return true;
+        }
     }
 }
