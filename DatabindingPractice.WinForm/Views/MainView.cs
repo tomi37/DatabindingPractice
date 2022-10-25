@@ -1,5 +1,8 @@
-﻿using DatabindingPractice.WinForm.Helpers;
+﻿using DatabindingPractice.WinForm.BackgroundTimer;
+using DatabindingPractice.WinForm.Helpers;
 using DatabindingPractice.WinForm.ViewModels;
+using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -62,5 +65,16 @@ namespace DatabindingPractice.WinForm.Views
             // Data Grid Viewのデータをクリア
             ClearButton.Click += (sender, e) => _viewModel.ClearData();
         }
+
+        private void TimerStartButton_Click(object sender, System.EventArgs e)
+        {
+            MeasureTimer.Start(5);
+        }
+
+        private void TimerStopButton_Click(object sender, System.EventArgs e)
+        {
+            MeasureTimer.Stop();
+        }
+
     }
 }

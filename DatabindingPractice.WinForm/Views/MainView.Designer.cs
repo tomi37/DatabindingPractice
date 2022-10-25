@@ -38,12 +38,14 @@
             this.WarningButton = new System.Windows.Forms.Button();
             this.InfoButton = new System.Windows.Forms.Button();
             this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
+            this.ENRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.JPRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.MedicalCheckDataGridView = new System.Windows.Forms.DataGridView();
             this.GetDataButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.ENRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
-            this.JPRadioButton = new DatabindingPractice.WinForm.Helpers.CustomRadioButton();
+            this.TimerStartButton = new System.Windows.Forms.Button();
+            this.TimerStopButton = new System.Windows.Forms.Button();
             this.ComboGroupBox.SuspendLayout();
             this.ExceptionGroupBox.SuspendLayout();
             this.LanguageGroupBox.SuspendLayout();
@@ -147,6 +149,30 @@
             this.LanguageGroupBox.TabStop = false;
             this.LanguageGroupBox.Text = "言語選択確認";
             // 
+            // ENRadioButton
+            // 
+            this.ENRadioButton.AutoCheck = false;
+            this.ENRadioButton.AutoSize = true;
+            this.ENRadioButton.Location = new System.Drawing.Point(112, 31);
+            this.ENRadioButton.Name = "ENRadioButton";
+            this.ENRadioButton.Size = new System.Drawing.Size(72, 19);
+            this.ENRadioButton.TabIndex = 7;
+            this.ENRadioButton.TabStop = true;
+            this.ENRadioButton.Text = "English";
+            this.ENRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // JPRadioButton
+            // 
+            this.JPRadioButton.AutoCheck = false;
+            this.JPRadioButton.AutoSize = true;
+            this.JPRadioButton.Location = new System.Drawing.Point(18, 31);
+            this.JPRadioButton.Name = "JPRadioButton";
+            this.JPRadioButton.Size = new System.Drawing.Size(88, 19);
+            this.JPRadioButton.TabIndex = 6;
+            this.JPRadioButton.TabStop = true;
+            this.JPRadioButton.Text = "Japanese";
+            this.JPRadioButton.UseVisualStyleBackColor = true;
+            // 
             // MedicalCheckDataGridView
             // 
             this.MedicalCheckDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -175,35 +201,33 @@
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             // 
-            // ENRadioButton
+            // TimerStartButton
             // 
-            this.ENRadioButton.AutoCheck = false;
-            this.ENRadioButton.AutoSize = true;
-            this.ENRadioButton.Location = new System.Drawing.Point(112, 31);
-            this.ENRadioButton.Name = "ENRadioButton";
-            this.ENRadioButton.Size = new System.Drawing.Size(72, 19);
-            this.ENRadioButton.TabIndex = 7;
-            this.ENRadioButton.TabStop = true;
-            this.ENRadioButton.Text = "English";
-            this.ENRadioButton.UseVisualStyleBackColor = true;
+            this.TimerStartButton.Location = new System.Drawing.Point(412, 325);
+            this.TimerStartButton.Name = "TimerStartButton";
+            this.TimerStartButton.Size = new System.Drawing.Size(106, 52);
+            this.TimerStartButton.TabIndex = 9;
+            this.TimerStartButton.Text = "TimerStart";
+            this.TimerStartButton.UseVisualStyleBackColor = true;
+            this.TimerStartButton.Click += new System.EventHandler(this.TimerStartButton_Click);
             // 
-            // JPRadioButton
+            // TimerStopButton
             // 
-            this.JPRadioButton.AutoCheck = false;
-            this.JPRadioButton.AutoSize = true;
-            this.JPRadioButton.Location = new System.Drawing.Point(18, 31);
-            this.JPRadioButton.Name = "JPRadioButton";
-            this.JPRadioButton.Size = new System.Drawing.Size(88, 19);
-            this.JPRadioButton.TabIndex = 6;
-            this.JPRadioButton.TabStop = true;
-            this.JPRadioButton.Text = "Japanese";
-            this.JPRadioButton.UseVisualStyleBackColor = true;
+            this.TimerStopButton.Location = new System.Drawing.Point(546, 325);
+            this.TimerStopButton.Name = "TimerStopButton";
+            this.TimerStopButton.Size = new System.Drawing.Size(106, 52);
+            this.TimerStopButton.TabIndex = 10;
+            this.TimerStopButton.Text = "TimerStop";
+            this.TimerStopButton.UseVisualStyleBackColor = true;
+            this.TimerStopButton.Click += new System.EventHandler(this.TimerStopButton_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 450);
+            this.Controls.Add(this.TimerStopButton);
+            this.Controls.Add(this.TimerStartButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.GetDataButton);
             this.Controls.Add(this.MedicalCheckDataGridView);
@@ -240,5 +264,7 @@
         private System.Windows.Forms.DataGridView MedicalCheckDataGridView;
         private System.Windows.Forms.Button GetDataButton;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button TimerStartButton;
+        private System.Windows.Forms.Button TimerStopButton;
     }
 }
